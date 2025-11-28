@@ -1,0 +1,49 @@
+
+<!-- Wrapper -->
+<section id="wrapper">
+  <header>
+    <div class="inner">
+      <h2>{{miembro.nombre}} {{miembro.apellido1}} {{miembro.apellido2}}</h2>
+      <p>{{miembro.titulo_academico}}</p>
+    </div>
+  </header>
+
+<!-- Content -->
+  <div class="wrapper">
+    <div class="inner">
+
+      <h3 class="major">Sobre mí</h3>
+      <p>{{miembro.descripcion}}</p>
+
+      {{#if miembro.linkedin_url}}
+      <ul class="actions">
+        <li><a href="https://{{miembro.linkedin_url}}" target="_blank" class="button">Ver mi LinkedIn</a></li>
+      </ul>
+      {{/if}}
+
+      <h3 class="major">Mis Habilidades</h3>
+      <ul>
+        {{#each habilidades}}
+        <li><strong>{{nombre}}:</strong> {{nivel}}</li>
+        {{else}}
+        <li>No hay habilidades registradas aún.</li>
+        {{/each}}
+      </ul>
+
+      <h3 class="major">Proyectos Personales</h3>
+      <section class="features">
+        {{#each proyectos}}
+        <article>
+          <a href="#" class="image"><img src="/images/pic04.jpg" alt="" /></a>
+          <h3 class="major">{{titulo}}</h3>
+          <p>{{descripcion}}</p>
+          <a href="#" class="special">Ver Detalles</a>
+        </article>
+        {{else}}
+        <p>Actualmente trabajando en nuevos proyectos...</p>
+        {{/each}}
+      </section>
+
+    </div>
+  </div>
+</section>
