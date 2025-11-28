@@ -23,9 +23,11 @@ app.use(express.static("public"))
 // Importamos las rutas desde la carpeta routes, porque es una buena practica
 app.use(require('./routes/index')); 
 
-// app.use('/admin', require('./routes/admin')); // Futura ruta para gestionar datos
+// app.use('/admin', require('./routes/admin')); // Futura ruta para gestionar 
 
 // Iniciar Servidor
 app.listen(app.get('port'), () => {
     console.log('>>> Servidor corriendo en puerto', app.get('port'));
 });
+
+
