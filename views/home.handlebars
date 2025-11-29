@@ -1,92 +1,65 @@
-<!-- Banner -->
 <section id="banner">
   <div class="inner">
     <div class="logo"><span class="icon fa-gem"></span></div>
-    <h2>This is Solid State</h2>
-    <p>Another free + fully responsive site template by <a href="http://html5up.net">HTML5 UP</a></p>
+    <h2>Equipo Freelance 2DAW</h2>
+    <p>Desarrollo Full Stack: Node.js, MySQL & Handlebars</p>
   </div>
 </section>
 
-<!-- Wrapper -->
 <section id="wrapper">
 
-  <!-- Artemis -->
-  <section id="one" class="wrapper spotlight style1">
+  {{#each miembros}}
+  <section id="{{id_html}}" class="{{clase_html}}">
     <div class="inner">
-      <a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
+      <a href="/{{nombre}}" class="image">
+        <img src="{{#if foto_url}}{{foto_url}}{{else}}/images/pic01.jpg{{/if}}" alt="{{nombre}}" />
+      </a>
       <div class="content">
-        <h2 class="major">Artemis Remiro Salamanca</h2>
-        <p>Lorem ipsum dolor sit amet, etiam lorem adipiscing elit. Cras turpis ante, nullam sit amet turpis non,
-          sollicitudin posuere urna. Mauris id tellus arcu. Nunc vehicula id nulla dignissim dapibus. Nullam
-          ultrices, neque et faucibus viverra, ex nulla cursus.</p>
-        <a href="/artemis" class="special">Ver Perfil</a>
+        <h2 class="major">{{nombre}} {{apellido1}} {{apellido2}}</h2>
+        <p>{{titulo_academico}}</p>
+        <p>{{descripcion}}</p>
+        <a href="/{{nombre}}" class="special">Ver Perfil</a>
       </div>
     </div>
   </section>
+  {{else}}
+  <section class="wrapper">
+    <div class="inner">
+      <p>Cargando equipo...</p>
+    </div>
+  </section>
+  {{/each}}
 
-  <!-- Noelia -->
-  <section id="two" class="wrapper alt spotlight style2">
-    <div class="inner">
-      <a href="#" class="image"><img src="images/pic02.jpg" alt="" /></a>
-      <div class="content">
-        <h2 class="major">Noelia Rubio Amor</h2>
-        <p>Lorem ipsum dolor sit amet, etiam lorem adipiscing elit. Cras turpis ante, nullam sit amet turpis non,
-          sollicitudin posuere urna. Mauris id tellus arcu. Nunc vehicula id nulla dignissim dapibus. Nullam
-          ultrices, neque et faucibus viverra, ex nulla cursus.</p>
-        <a href="/noelia" class="special">Ver Perfil</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Javier -->
-  <section id="three" class="wrapper spotlight style3">
-    <div class="inner">
-      <a href="#" class="image"><img src="images/pic03.jpg" alt="" /></a>
-      <div class="content">
-        <h2 class="major">Javier Martin Marquez</h2>
-        <p>Lorem ipsum dolor sit amet, etiam lorem adipiscing elit. Cras turpis ante, nullam sit amet turpis non,
-          sollicitudin posuere urna. Mauris id tellus arcu. Nunc vehicula id nulla dignissim dapibus. Nullam
-          ultrices, neque et faucibus viverra, ex nulla cursus.</p>
-        <a href="/javier" class="special">Ver Perfil</a>
-      </div>
-    </div>
-  </section>
 
   <!-- Trabajos grupales -->
   <section id="four" class="wrapper alt style1">
     <div class="inner">
-      <h2 class="major">Trabajos grupales</h2>
-      <p>Cras mattis ante fermentum, malesuada neque vitae, eleifend erat. Phasellus non pulvinar erat. Fusce
-        tincidunt, nisl eget mattis egestas, purus ipsum consequat orci, sit amet lobortis lorem lacus in tellus.
-        Sed ac elementum arcu. Quisque placerat auctor laoreet.</p>
+      <h2 class="major">Trabajos del Equipo</h2>
+      <p>Proyectos desarrollados conjuntamente aplicando metodologías ágiles.</p>
+
       <section class="features">
+        {{#each trabajos}}
         <article>
-          <a href="#" class="image"><img src="images/pic04.jpg" alt="" /></a>
-          <h3 class="major">Sed feugiat lorem</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing vehicula id nulla dignissim dapibus ultrices.</p>
-          <a href="#" class="special">Learn more</a>
+          <a href="#" class="image">
+            <img src="{{#if imagen_url}}{{imagen_url}}{{else}}/images/pic04.jpg{{/if}}" alt="" />
+          </a>
+
+          <h3 class="major">{{titulo}}</h3>
+          <p>{{descripcion}}</p>
+
+          <p><strong>Cliente:</strong> {{cliente}}<br>
+            <small>Tecnologías: {{tecnologias_texto}}</small>
+          </p>
+
+          <a href="#" class="special">Ver Proyecto</a>
         </article>
-        <article>
-          <a href="#" class="image"><img src="images/pic05.jpg" alt="" /></a>
-          <h3 class="major">Nisl placerat</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing vehicula id nulla dignissim dapibus ultrices.</p>
-          <a href="#" class="special">Learn more</a>
-        </article>
-        <article>
-          <a href="#" class="image"><img src="images/pic06.jpg" alt="" /></a>
-          <h3 class="major">Ante fermentum</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing vehicula id nulla dignissim dapibus ultrices.</p>
-          <a href="#" class="special">Learn more</a>
-        </article>
-        <article>
-          <a href="#" class="image"><img src="images/pic07.jpg" alt="" /></a>
-          <h3 class="major">Fusce consequat</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing vehicula id nulla dignissim dapibus ultrices.</p>
-          <a href="#" class="special">Learn more</a>
-        </article>
+        {{else}}
+        <p>Aún no hemos subido trabajos grupales.</p>
+        {{/each}}
       </section>
+
       <ul class="actions">
-        <li><a href="#" class="button">Browse All</a></li>
+        <li><a href="#" class="button">Ver Portfolio Completo</a></li>
       </ul>
     </div>
   </section>
