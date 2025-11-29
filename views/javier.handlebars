@@ -1,4 +1,3 @@
-
 <!-- Wrapper -->
 <section id="wrapper">
   <header>
@@ -8,7 +7,7 @@
     </div>
   </header>
 
-<!-- Content -->
+  <!-- Content -->
   <div class="wrapper">
     <div class="inner">
 
@@ -34,7 +33,9 @@
       <section class="features">
         {{#each proyectos}}
         <article>
-          <a href="#" class="image"><img src="/images/pic04.jpg" alt="" /></a>
+          <a href="#" class="image">
+            <img src="{{#if imagen_url}}{{imagen_url}}{{else}}/images/pic04.jpg{{/if}}" alt="" />
+          </a>
           <h3 class="major">{{titulo}}</h3>
           <p>{{descripcion}}</p>
           <a href="#" class="special">Ver Detalles</a>
