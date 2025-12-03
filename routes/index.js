@@ -3,10 +3,40 @@ const router = express.Router();
 const pool = require('../database');
 
 // Ruta Principal
-router.get('/', (req, res) => {
-  // Simplemente renderiza la vista 'home.handlebars'
-  // No pasamos ningún objeto con datos {}
-  res.render('home');
+// RUTA PRINCIPAL (HOME)
+router.get('/', async (req, res) => {
+  // 1. Traemos los datos
+  const miembros = await pool.query('SELECT * FROM miembros');
+  const trabajos = await pool.query('SELECT * FROM trabajos_equipo');
+
+  // 2. LOGICA VISUAL: Restaurar los IDs "one", "two", "three"
+  const idsTexto = ["one", "two", "three"]; // Diccionario de IDs
+
+  miembros.forEach((miembro, index) => {
+    // A) Asignamos el ID de texto (one, two, three...)
+    // Si hay más miembros que palabras, usamos "generic"
+    miembro.id_html = idsTexto[index] || "generic";
+
+    // B) Asignamos las clases (style1, style2, style3...)
+    // El template usa style1, style2, style3 y luego repite
+    const numEstilo = (index % 3) + 1; // Esto da 1, 2, 3, 1, 2, 3...
+
+    // Base de la clase
+    let clases = `wrapper spotlight style${numEstilo}`;
+
+    // Si es posición impar (1, 3...), añadimos 'alt' para mover la foto a la derecha
+    if (index % 2 !== 0) {
+      clases = `wrapper alt spotlight style${numEstilo}`;
+    }
+
+    miembro.clase_html = clases;
+  });
+
+  // 3. Renderizamos
+  res.render('home', {
+    miembros: miembros,
+    trabajos: trabajos
+  });
 });
 
 // Ruta para un miembro (ejemplo estático)
@@ -14,7 +44,7 @@ router.get('/contacto', (req, res) => {
   res.render('contacto');
 });
 
-router.get('/artemis', async(req, res) => {
+router.get('/artemis', async (req, res) => {
   const miId = 1; // En el script SQL, Artemis es el ID 1
 
   // 1. CONSULTA: Datos Personales
